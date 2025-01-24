@@ -1,4 +1,4 @@
-import {BrowserRouter, Routes,Route} from 'react-router'
+import {BrowserRouter, Routes,Route} from 'react-router-dom'
 import PublicRoute from './PublicRoute'
 import Login from '../pages/Login'
 import Main from '../Layout/Main'
