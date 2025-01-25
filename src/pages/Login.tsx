@@ -1,49 +1,74 @@
-import { Box, TextField, Button, Typography, Container, Paper } from '@mui/material';
-
+import { TextField, Button, Typography, Container, Paper, Grid2, Avatar, Stack } from '@mui/material';
+import LockIcon from '@mui/icons-material/Lock';
+import { Link } from 'react-router';
+import { useState } from 'react';
 const Login = () => {
-  const handleSubmit = () => {
-    // e.preventDefault();    
-    console.log('Form submitted');
+
+  interface typeData {
+    Email:string,
+    Password:string
+  }
+
+  const loginData:typeData = {
+    Email:"",
+    Password:""
+  }
+
+  const [data,setData] = useState<typeData>(loginData);
+  const [error,setError] =  useState<typeData>(loginData);
+
+  const handleChange = (e:React.ChangeEvent<HTMLInputElement>)=>{
+      setData((prev)=> ({...data,[e.target.name]:e.target.value}))
+  }
+
+  const handleSubmit = (e:React.ChangeEvent<HTMLFormElement>) => {``
+    e.preventDefault();     
+    if(!data.Email.trim() ||  !data.Password.trim()) return setError({Password: 'Both Feilds are Required!!',Email:''});
+    if(!data.Email.includes('@')) return setError({Email: 'Invalid Email!!',Password:''});
+    if(!data.Password.trim()) return setError({Password: "Password required",Email:""});
+    if(data.Password.length !== 6) return setError({Password: "Password must be 6 length",Email:""});
+    alert('Form submitted');
+    console.table(data)
+    setData(loginData)
+    setError(loginData);
   };
 
   return (
-    <Container component="main" maxWidth="xs">
-      <Paper elevation={3} sx={{ mt: 8, p: 4, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <Typography component="h1" variant="h5">
-          Sign in
-        </Typography>
-        <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
-            autoFocus
-          />
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-          />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-          >
-            Sign In
-          </Button>
-        </Box>
-      </Paper>
-    </Container>
+    <Container  maxWidth="sm">
+      <Paper elevation={15} sx={{p:5, mt:15}}>
+        <Stack direction="column" spacing="0.5" sx={{pb:3,display:'flex',alignItems:"center"}} >
+        <Avatar sx={{background:"#F05"}}>
+          <LockIcon/>
+        </Avatar>
+        <Typography>Login</Typography>
+        </Stack>
+        <form onSubmit={handleSubmit}>
+      <Grid2 container spacing={2}>
+
+       <Grid2 size={{xs:12,sm:12}}>
+         <TextField fullWidth label="Email" variant='outlined' onChange={handleChange} value={data.Email} name='Email'  size='small' />
+       {error && <Typography color='red'>{error.Email}</Typography>}
+
+       </Grid2>
+
+       <Grid2 size={{xs:12,sm:12}}>
+         <TextField fullWidth label="Password" variant='outlined' onChange={handleChange} value={data.Password} name='Password' size='small'/>
+       {error && <Typography color='red'>{error.Password}</Typography>}
+       </Grid2>
+
+       <Grid2 size={{xs:6}} sx={{textAlign:"start"}}>
+         <Typography variant="body2" size='small'> <Link to={'/forget-password'}>Forgotten Pasword?</Link></Typography>
+         <Typography variant="body2" size='small'>Create new Account?  <Link to={'/signup'}>Sign Up</Link></Typography>
+       </Grid2>
+
+       <Grid2 size={{xs:6}} sx={{textAlign:"right"}}>
+         <Button variant='outlined' type='submit' size='small' >Login</Button>
+       </Grid2>
+
+      </Grid2>
+      </form>
+       </Paper>
+         </Container>
   );
 };
 
