@@ -56,7 +56,6 @@ const Login = () => {
   };
 
 
-
   return (
     <Container maxWidth="lg" sx={{display:"flex",height:'100vh'}}>
       <Grid2 container spacing={5}>

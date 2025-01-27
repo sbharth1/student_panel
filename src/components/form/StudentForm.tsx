@@ -1,7 +1,7 @@
 import { Grid2, TextField } from "@mui/material"
 import React, { useState } from "react";
 
-const StudentForm = ({formId}) => {
+const StudentForm = ({formId}:any) => {
     interface typeData {
         Name:string,
         Email:string,    
