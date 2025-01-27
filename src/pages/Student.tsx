@@ -18,8 +18,8 @@ const Student = () => {
     <Button variant="outlined" onClick={handleClickOpen}>
         Open dialog
       </Button>
-    <ReactDialogBox open={open} handleClose={handleClose} title={selectedBox ? 'Update Student Form' : 'Create Student Form'} selectedBox={selectedBox}>
-      <StudentForm/>
+    <ReactDialogBox open={open} handleClose={handleClose} formId="student" title={selectedBox ? 'Update Student Form' : 'Create Student Form'} selectedBox={selectedBox}>
+      <StudentForm formId="student"/>
     </ReactDialogBox>
     </>
   )

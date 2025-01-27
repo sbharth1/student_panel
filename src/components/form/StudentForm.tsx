@@ -1,7 +1,7 @@
 import { Grid2, TextField } from "@mui/material"
 import React, { useState } from "react";
 
-const StudentForm = () => {
+const StudentForm = ({formId}) => {
     interface typeData {
         Name:string,
         Email:string,    
@@ -17,11 +17,12 @@ const StudentForm = () => {
     }
     const handleSubmit = (e:React.ChangeEvent<HTMLFormElement>)=>{
          e.preventDefault();
+         console.table(formData)
      
     }
   return (
     <>
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} id={formId}>
 
 <Grid2 container spacing={2}>
             <Grid2 size={{xs:12}}>

@@ -16,7 +16,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     },
   }));
 
-const ReactDialogBox = ({open, handleClose,title,selectedBox,children}:any) => {
+const ReactDialogBox = ({open, handleClose,title,selectedBox,children,formId}:any) => {
 
   return (
     <>
@@ -47,7 +47,7 @@ const ReactDialogBox = ({open, handleClose,title,selectedBox,children}:any) => {
                  {children}
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={handleClose}>
+          <Button autoFocus type='submit' form={formId}>
             {selectedBox ? "Update" : "Create"}
           </Button>
         </DialogActions>
