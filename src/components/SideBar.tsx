@@ -55,7 +55,7 @@ const Navlinks = [
   },
 
   {
-    label: "Students",
+    label: "All Pages",
     icon: <Mail />,
     path: "/student",
     children: [

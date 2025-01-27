@@ -1,8 +1,10 @@
 import { TextField, Button, Typography, Container, Paper, Grid2, Avatar, Stack } from '@mui/material';
 import LockIcon from '@mui/icons-material/Lock';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { useState } from 'react';
 const Login = () => {
+
+  const navigate = useNavigate();
 
   interface typeData {
     Email:string,
@@ -21,7 +23,8 @@ const Login = () => {
       setData((prev)=> ({...data,[e.target.name]:e.target.value}))
   }
 
-  const handleSubmit = (e:React.ChangeEvent<HTMLFormElement>) => {``
+  const handleSubmit = (e:React.ChangeEvent<HTMLFormElement>) => {
+    try{
     e.preventDefault();     
     if(!data.Email.trim() ||  !data.Password.trim()) return setError({Password: 'Both Feilds are Required!!',Email:''});
     if(!data.Email.includes('@')) return setError({Email: 'Invalid Email!!',Password:''});
@@ -31,6 +34,10 @@ const Login = () => {
     console.table(data)
     setData(loginData)
     setError(loginData);
+    navigate('/dashboard')
+  }catch(err){
+    console.log(err,'--err in catch')
+  }
   };
 
   return (
