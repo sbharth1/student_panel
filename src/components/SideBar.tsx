@@ -8,8 +8,11 @@ import {
 } from "@mui/material";
 import { Mail } from "@mui/icons-material";
 import  { useState } from "react";
+import DashboardIcon from '@mui/icons-material/Dashboard';
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import LayersIcon from '@mui/icons-material/Layers';
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
+import GroupIcon from '@mui/icons-material/Group';
 import { useNavigate } from "react-router";
 
 const CollapseListItem = ({ links }:any) => {
@@ -50,18 +53,18 @@ const CollapseListItem = ({ links }:any) => {
 const Navlinks = [
   {
     label: "Dashboard",
-    icon: <Mail />,
+    icon: <DashboardIcon />,
     path: "/dashboard",
   },
 
   {
     label: "All Pages",
-    icon: <Mail />,
+    icon: <LayersIcon />,
     path: "/student",
     children: [
       {
         label: "Students",
-        icon: <Mail />,
+        icon: <GroupIcon />,
         path: "/student",
       },
     ],
