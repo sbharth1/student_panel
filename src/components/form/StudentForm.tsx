@@ -12,7 +12,7 @@ const StudentForm :React.FC<StudentFormProps> = ({formId,dispatch,setStudentForm
   }
 
 
-// useReducer  Usec
+// useReducer  Usecx
 
 const handleAddStudent = (e:React.FormEvent<HTMLFormElement>)=>{
   e.preventDefault();

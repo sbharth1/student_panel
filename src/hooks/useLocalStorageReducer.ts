@@ -6,7 +6,7 @@ const useLocalStorageReducer = (key, reducer, initialState) => {
     try {
       return savedState ? JSON.parse(savedState) : initialState;
     } catch (e) {
-      console.error(`Error parsing state for key "${key}":`, e);
+      console.error(`Error parsing"${key}":`, e);
       return initialState;
     }
   };

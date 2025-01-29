@@ -42,7 +42,7 @@ const StudentTable: React.FC<StudentTableProps> = ({columns =[],rows=[],actions=
             {
               actions.length > 0 &&  actions.map((action,index)=>(
                 <>
-                  <IconButton onClick={action.onClick} key={index}>{action.icon} {action.delete}</IconButton>
+                  <IconButton onClick={()=>action.onClick(row)} key={index}>{action.icon} {action.delete}</IconButton>
                   </>)) 
             }
           </TableCell>

@@ -14,6 +14,7 @@ const Student = () => {
   const [open, setOpen] = useState<boolean>(false);
   const [studentForm,setStudentForm] = useState<boolean>(false);
   const handleClickOpen = () => {
+    setStudentForm(false)
     setOpen(true);
   };
   const handleClose = () => {
@@ -41,11 +42,11 @@ const columns:StudentColumnData[]  = [
 const actions = [
   {
     icon:<EditIcon/>,
-    onClick:()=> {setOpen(true), setStudentForm(true)}
+    onClick:(row)=> {setOpen(true), setStudentForm(true)}
   },
   {
     delete:<DeleteIcon/>,
-    onClick:()=>{}
+    onClick:(row)=> dispatch({type:"DELETE_STUDENT",payload:row.id})
   }
 ]
 
