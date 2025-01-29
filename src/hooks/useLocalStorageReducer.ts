@@ -16,7 +16,7 @@ const useLocalStorageReducer = (key, reducer, initialState) => {
   useEffect(() => {
     if (state !== initialState) {
       localStorage.setItem(key, JSON.stringify(state));
-    }
+    } 
   }, [key, state, initialState]);
 
   return [state, dispatch];

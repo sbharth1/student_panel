@@ -5,7 +5,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { IconButton } from '@mui/material';
+import { IconButton, Typography } from '@mui/material';
 import { StudentTableProps } from '../../types';
 
 
@@ -31,7 +31,7 @@ const StudentTable: React.FC<StudentTableProps> = ({columns =[],rows=[],actions=
           }
       </TableHead>
       <TableBody>
-        {rows?.map((row) => (
+          { rows.length > 0  ? rows?.map((row) => (
           <TableRow
             key={row.name}
           >
@@ -47,7 +47,7 @@ const StudentTable: React.FC<StudentTableProps> = ({columns =[],rows=[],actions=
             }
           </TableCell>
           </TableRow>
-        ))}
+        )) : <TableCell><Typography color='error' variant='h5' align='right'>No Student Data</Typography></TableCell>}
       </TableBody>
     </Table>
   </TableContainer>

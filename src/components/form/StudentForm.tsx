@@ -2,7 +2,7 @@ import { Grid2, TextField } from "@mui/material"
 import React, { useState } from "react";
 import { FormtypeData, StudentFormProps } from "../../types";
 
-const StudentForm :React.FC<StudentFormProps> = ({formId,dispatch,setStudentForm,setOpen}:any) => {
+const StudentForm :React.FC<StudentFormProps> = ({formId,dispatch,setStudentForm,setOpen,editId}:any) => {
   const [formData,SetFormData] = useState<FormtypeData>({name:'', email:'',});
 
   
@@ -19,7 +19,7 @@ const handleAddStudent = (e:React.FormEvent<HTMLFormElement>)=>{
   
   if(!formData.email || !formData.name) return alert("Fill All Inputs!!");
       if(setStudentForm){
-    dispatch({type:'EDIT_STUDENT',payload:{id:setStudentForm.id,...formData}});
+    dispatch({type:'EDIT_STUDENT',payload:{id:editId}});
       }else{
         dispatch({type:"ADD_STUDENT",payload:formData})
       }
