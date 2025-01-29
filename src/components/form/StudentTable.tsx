@@ -5,16 +5,10 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { StudentColumnData, StudentRowData } from '../../types';
 import { IconButton } from '@mui/material';
-import { ReactNode } from 'react';
+import { StudentTableProps } from '../../types';
 
-interface StudentTableProps {
-  columns : StudentColumnData[];
-  rows:StudentRowData[];
-  actions: { icon: ReactNode; delete: ReactNode }[]; 
-  addActionHeader: { feilds: string; headerName: string }[];
-}
+
 const StudentTable: React.FC<StudentTableProps> = ({columns =[],rows=[],actions=[],addActionHeader=[]}) => {
 
   return (
@@ -30,7 +24,7 @@ const StudentTable: React.FC<StudentTableProps> = ({columns =[],rows=[],actions=
            
               {/* <TableCell align="left"> */}
                 {addActionHeader.map((value,index)=>(
-                     <TableCell sx={{fontWeight:"bold"}}>{value.headerName}</TableCell>
+                     <TableCell sx={{fontWeight:"bold"}} key={index}>{value.headerName}</TableCell>
                 ))}
               {/* </TableCell> */}
         </TableRow>
@@ -48,8 +42,7 @@ const StudentTable: React.FC<StudentTableProps> = ({columns =[],rows=[],actions=
             {
               actions.length > 0 &&  actions.map((action,index)=>(
                 <>
-                  <IconButton color='success'>{action.icon}</IconButton>
-                  <IconButton color='error'>{action.delete}</IconButton>
+                  <IconButton onClick={action.onClick} key={index}>{action.icon} {action.delete}</IconButton>
                   </>)) 
             }
           </TableCell>

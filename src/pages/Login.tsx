@@ -13,13 +13,9 @@ import Lottie from "lottie-react";
 import LockIcon from "@mui/icons-material/Lock";
 import { Link, useNavigate } from "react-router";
 import { useState } from "react";
+import { typeData } from "../types";
 const Login = () => {
   const navigate = useNavigate();
-
-  interface typeData {
-    Email: string;
-    Password: string;
-  }
 
   const loginData: typeData = {
     Email: "",
@@ -58,14 +54,15 @@ const Login = () => {
 
   return (
     <Container maxWidth="lg" sx={{display:"flex",height:'100vh'}}>
-      <Grid2 container spacing={5}>
+      {/* <Paper elevation={15} sx={{p:5}}> */}
+      <Grid2 container>
 
-   <Grid2 size={{xs:12,sm:6}} mb={15} sx={{display:'flex'}}>
+   <Grid2 size={{xs:12,sm:6}} sx={{display:'flex',justifyContent:"center",alignItems:'center'}}>
       <Lottie animationData={loginGIF} loop={true}/>
    </Grid2>
 
-  <Grid2 size={{xs:12,sm:6}}>
-      <Paper elevation={15} sx={{ p: 5, mt: 15 }}>
+  <Grid2 size={{xs:12,sm:6}} sx={{display:'flex',justifyContent:"center",alignItems:'center'}}>
+      <Paper elevation={15} sx={{ p: 5, }}>
         <Stack
           direction="column"
           spacing="0.5"
@@ -124,6 +121,7 @@ const Login = () => {
       </Paper>
       </Grid2>
       </Grid2> 
+      {/* </Paper> */}
     </Container>
   );
 };

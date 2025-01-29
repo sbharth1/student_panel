@@ -6,7 +6,6 @@ import {
   ListItemIcon,
   Collapse,
 } from "@mui/material";
-import { Mail } from "@mui/icons-material";
 import  { useState } from "react";
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
