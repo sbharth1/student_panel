@@ -12,7 +12,6 @@ import { reducer } from "../reducer/addStudentReducer";
 const Student = () => {
    const [students,dispatch] = useLocalStorageReducer('students',reducer,[]);
   const [open, setOpen] = useState<boolean>(false);
-  const [editId,setEditId] = useState<number>()
   const [studentForm,setStudentForm] = useState<boolean>(false);
   const handleClickOpen = () => {
     setStudentForm(false)
@@ -38,7 +37,7 @@ const columns:StudentColumnData[]  = [
 const actions = [
   {
     icon:<EditIcon/>,
-    onClick:(row)=> {setOpen(true), setStudentForm(true),setEditId(row.id)}
+    onClick:(row)=> {setOpen(true), setStudentForm(true)}
   },
   {
     delete:<DeleteIcon/>,
@@ -56,7 +55,7 @@ const actions = [
 
   {/* StudentForm */}
     <ReactDialogBox open={open} handleClose={handleClose} formId="student" title={studentForm ? 'Update Student Form' : 'Create Student Form'} studentForm={studentForm}>
-      <StudentForm formId="student" setOpen={setOpen} editId={editId} setStudentForm={studentForm} dispatch={dispatch} />
+      <StudentForm formId="student" setOpen={setOpen}  setStudentForm={studentForm} dispatch={dispatch} />
     </ReactDialogBox>
 
       {/* StudentTable */}
