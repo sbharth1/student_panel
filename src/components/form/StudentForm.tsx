@@ -2,12 +2,14 @@ import { Grid2, TextField, Typography } from "@mui/material"
 import React, { useState } from "react";
 import { FormtypeData, StudentFormProps } from "../../types";
 
-const StudentForm :React.FC<StudentFormProps> = ({formId,dispatch,setStudentForm,setOpen}:any) => {
+const StudentForm :React.FC<StudentFormProps> = ({formId,dispatch,setStudentForm,setOpen,initialValue}:any) => {
   interface typeData {
     name:string,
     email:string,
   }
-  const [formData,SetFormData] = useState<FormtypeData>({name:'', email:'',});
+  const [formData,SetFormData] = useState<FormtypeData>(
+    {name: initialValue.name || '', email:initialValue.email || ''}
+  );
   const [error,setError]  = useState<typeData>({
     name:'',
     email:''
@@ -29,12 +31,18 @@ const StudentForm :React.FC<StudentFormProps> = ({formId,dispatch,setStudentForm
 const handleAddStudent = (e:React.FormEvent<HTMLFormElement>)=>{
   setError({name:'',email:''});
   e.preventDefault();
-
-    if(setStudentForm){
-    dispatch({type:'EDIT_STUDENT'});
-      }else{
-        dispatch({type:"ADD_STUDENT",payload:formData})
-      }
+  
+  if(formData.name === '' || formData.email===''){
+    setError({email:"both feilds are required",name:""});
+    setOpen(true)
+  }else{
+      if(setStudentForm){
+        dispatch({type:'EDIT_STUDENT',payload:{id:initialValue.id,...formData}});
+          }else{
+            dispatch({type:"ADD_STUDENT",payload:formData})
+          }
+        }
+  
       setOpen(false)
       SetFormData({name:"",email:""});
     }

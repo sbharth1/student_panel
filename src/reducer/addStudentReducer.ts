@@ -6,7 +6,7 @@ switch(action.type){
     }
     case 'EDIT_STUDENT' : {
         return state.map((student)=>(
-            action.payload.id != student.id ? {...student, ...student.payload} : student
+            action.payload.id === student.id ? {...student, ...action.payload} : student
         ))
     }
     case 'DELETE_STUDENT': {

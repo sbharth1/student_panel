@@ -13,7 +13,10 @@ const Student = () => {
    const [students,dispatch] = useLocalStorageReducer('students',reducer,[]);
   const [open, setOpen] = useState<boolean>(false);
   const [studentForm,setStudentForm] = useState<boolean>(false);
+  const [selectRow,setSelectRow] = useState<object | string>(''); 
+
   const handleClickOpen = () => {
+    setSelectRow('')
     setStudentForm(false)
     setOpen(true);
   };
@@ -27,7 +30,6 @@ const columns:StudentColumnData[]  = [
   {feilds:"name",headerName:"Name"},
   {feilds:"email",headerName:"Email"},
 ]
-
   
 
   const addActionHeader = [
@@ -37,7 +39,7 @@ const columns:StudentColumnData[]  = [
 const actions = [
   {
     icon:<EditIcon/>,
-    onClick:(row)=> {setOpen(true), setStudentForm(true)}
+    onClick:(row)=> {setOpen(true),setStudentForm(true),setSelectRow(row)}
   },
   {
     delete:<DeleteIcon/>,
@@ -55,7 +57,7 @@ const actions = [
 
   {/* StudentForm */}
     <ReactDialogBox open={open} handleClose={handleClose} formId="student" title={studentForm ? 'Update Student Form' : 'Create Student Form'} studentForm={studentForm}>
-      <StudentForm formId="student" setOpen={setOpen}  setStudentForm={studentForm} dispatch={dispatch} />
+      <StudentForm formId="student" setOpen={setOpen} initialValue={selectRow}  setStudentForm={studentForm} dispatch={dispatch} />
     </ReactDialogBox>
 
       {/* StudentTable */}
