@@ -2,7 +2,7 @@ import { Grid2, TextField, Typography } from "@mui/material"
 import React, { useState } from "react";
 import { FormtypeData, StudentFormProps } from "../../types";
 
-const StudentForm :React.FC<StudentFormProps> = ({formId,dispatch,setStudentForm,setOpen,initialValue}:any) => {
+const StudentForm :React.FC<StudentFormProps> = ({formId,dispatch,StudentForm,setOpen,initialValue}:any) => {
   interface typeData {
     name:string,
     email:string,
@@ -36,7 +36,7 @@ const handleAddStudent = (e:React.FormEvent<HTMLFormElement>)=>{
     setError({email:"both feilds are required",name:""});
     setOpen(true)
   }else{
-      if(setStudentForm){
+      if(StudentForm){
         dispatch({type:'EDIT_STUDENT',payload:{id:initialValue.id,...formData}});
           }else{
             dispatch({type:"ADD_STUDENT",payload:formData})

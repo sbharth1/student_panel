@@ -57,7 +57,7 @@ const actions = [
 
   {/* StudentForm */}
     <ReactDialogBox open={open} handleClose={handleClose} formId="student" title={studentForm ? 'Update Student Form' : 'Create Student Form'} studentForm={studentForm}>
-      <StudentForm formId="student" setOpen={setOpen} initialValue={selectRow}  setStudentForm={studentForm} dispatch={dispatch} />
+      <StudentForm formId="student" setOpen={setOpen} initialValue={selectRow}  StudentForm={studentForm} dispatch={dispatch} />
     </ReactDialogBox>
 
       {/* StudentTable */}
