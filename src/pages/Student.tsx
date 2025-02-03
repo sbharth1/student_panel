@@ -2,7 +2,7 @@ import {useState } from "react";
 import ReactDialogBox from "../components/ReactDialogBox"
 import { Button } from "@mui/material";
 import StudentForm from "../components/form/StudentForm";
-import StudentTable from "../components/form/StudentTable";
+import StudentTable from "../components/table/StudentTable";
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { StudentColumnData, } from "../types";
