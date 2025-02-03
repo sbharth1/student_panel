@@ -1,7 +1,15 @@
+import { FormControl, FormLabel, TextField } from "@mui/material"
 
-const InputFeild = () => {
+const InputFeild = ({label,PropsValue}) => {
   return (
-    <div>InputFeild</div>
+    <>
+    
+    <FormControl fullWidth>
+        <FormLabel htmlFor={PropsValue.id}>{label}</FormLabel>
+        <TextField {...PropsValue}/>
+    </FormControl>
+
+    </>
   )
 }
 
