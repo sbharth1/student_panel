@@ -1,9 +1,8 @@
 export const reducer = (state,action)=>{
-    console.log(action)
 switch(action.type){
-    case 'ADD_STUDENT' : {
-        return [...state,{id:Date.now(), ...action.payload}]
-    }
+    case 'ADD_STUDENT' : 
+        return [...state,{id:Date.now(), ...action.payload}];
+        
     case 'EDIT_STUDENT' : {
         return state.map((student)=>(
             action.payload.id === student.id ? {...student, ...action.payload} : student

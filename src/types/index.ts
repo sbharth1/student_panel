@@ -5,14 +5,6 @@ export interface StudentRowData {
   name:string,
   email:string,
 }
-export   interface typeData {
-  Email: string;
-  Password: string;
-}
-  export interface FormtypeData {
-      name:string,
-        email:string,    
-}
 
 export interface StudentColumnData {
 feilds:keyof StudentRowData,

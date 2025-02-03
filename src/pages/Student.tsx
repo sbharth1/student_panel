@@ -1,7 +1,6 @@
 import {useState } from "react";
 import ReactDialogBox from "../components/ReactDialogBox"
 import { Button } from "@mui/material";
-// import StudentForm from "../components/form/StudentForm";
 import StudentTable from "../components/table/StudentTable";
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -58,7 +57,6 @@ const actions = [
 
   {/* StudentForm */}
     <ReactDialogBox open={open} handleClose={handleClose} formId="student" title={studentForm ? 'Update Student Form' : 'Create Student Form'} studentForm={studentForm}>
-      {/* <StudentForm formId="student" setOpen={setOpen} initialValue={selectRow}  StudentForm={studentForm} dispatch={dispatch} /> */}
       <FormikForm formId="student" setOpen={setOpen} initialValue={selectRow} dispatch={dispatch}/>
     </ReactDialogBox>
 
