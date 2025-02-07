@@ -1,5 +1,4 @@
 import {
-  TextField,
   Button,
   Typography,
   Container,
@@ -14,6 +13,7 @@ import * as Yup from 'yup'
 import Lottie from "lottie-react";
 import LockIcon from "@mui/icons-material/Lock";
 import { Link, useNavigate } from "react-router";
+import InputFeild from "../components/input/InputFeild";
 // import { typeData } from "../types";
 
 const Login = () => {
@@ -37,6 +37,7 @@ const Login = () => {
       validationSchema,
       onSubmit:(values)=>{
        console.log(values)
+       alert("form submit!!");
        navigate("/dashboard");
 
       }
@@ -67,30 +68,32 @@ const Login = () => {
         <form onSubmit={handleSubmit}>
           <Grid2 container spacing={2}>
             <Grid2 size={{ xs: 12, sm: 12 }}>
-              <TextField
-                fullWidth
-                error={!!errors.email}
-                label="email"
-                variant="outlined"
-                onChange={handleChange}
-                helperText={errors.email}
-                value={values.email}
-                name="email"
-                size="small"
+              <InputFeild 
+              label="Email:"
+              PropsValue={{
+                id:"email",
+                size:"small",
+                name:"email",
+                value:values.email,
+                onChange:handleChange,
+                error:errors.email,
+                helperText:errors.email,
+              }}
               />
             </Grid2>
 
             <Grid2 size={{ xs: 12, sm: 12 }}>
-              <TextField
-              error={!!errors.password}
-                fullWidth
-                label="password"
-                variant="outlined"
-                helperText={errors.password}
-                onChange={handleChange}
-                value={values.password}
-                name="password"
-                size="small"
+            <InputFeild 
+              label="Password:"
+              PropsValue={{
+                id:"password",
+                size:"small",
+                name:"password",
+                value:values.password,
+                onChange:handleChange,
+                error:errors.password,
+                helperText:errors.password
+              }}
               />
             </Grid2>
 

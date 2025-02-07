@@ -2,7 +2,6 @@ import { useFormik } from "formik";
 import InputFeild from "../input/InputFeild";
 import { useEffect } from "react";
 import * as Yup from "yup";
-import { Typography } from "@mui/material";
 
 const FormikForm = ({ formId, setOpen, initialValue = "", dispatch }) => {
   const validationSchema = Yup.object().shape({
@@ -47,24 +46,26 @@ const FormikForm = ({ formId, setOpen, initialValue = "", dispatch }) => {
           PropsValue={{
             id: "name",
             size: "small",
+            error:errors.name,
+            helperText:errors.name,
             name: "name",
             value: values.name,
             onChange: handleChange,
           }}
         />
-        {errors.name && <Typography color="red">{errors.name}</Typography>}
 
         <InputFeild
           label="Email:"
           PropsValue={{
             id: "email",
             size: "small",
+            error:errors.email,
+            helperText:errors.email,
             name: "email",
             value: values.email,
             onChange: handleChange,
           }}
         />
-        {errors.email && <Typography color="red">{errors.email}</Typography>}
       </form>
     </>
   );
