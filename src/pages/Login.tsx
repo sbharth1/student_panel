@@ -42,7 +42,6 @@ const Login = () => {
      else if ((data.Password.length) < 6)
       return setError({ Password: "Password must be 6 character", Email: "" });
       alert("Form submitted");
-      console.log(data);
       setData(loginData);
       setError(loginData);
       navigate("/dashboard");
@@ -53,20 +52,19 @@ const Login = () => {
 
 
   return (
-    <Container maxWidth="lg" sx={{display:"flex",height:'100vh'}}>
-      {/* <Paper elevation={15} sx={{p:5}}> */}
-      <Grid2 container>
+    <Container maxWidth="md">
+      <Paper elevation={15} sx={{p:5,mt:15}}>
+      <Grid2 container size={{xs:12}}>
 
    <Grid2 size={{xs:12,sm:6}} sx={{display:'flex',justifyContent:"center",alignItems:'center'}}>
       <Lottie animationData={loginGIF} loop={true}/>
    </Grid2>
 
-  <Grid2 size={{xs:12,sm:6}} sx={{display:'flex',justifyContent:"center",alignItems:'center'}}>
-      <Paper elevation={15} sx={{ p: 5, }}>
+  <Grid2 size={{xs:6}} sx={{mt:5,pl:5}}>
         <Stack
           direction="column"
           spacing="0.5"
-          sx={{ pb: 3, display: "flex", alignItems: "center" }}
+          sx={{ pb: 3, display: "flex", alignItems: "center",justifyContent:"center" }}
         >
           <Avatar sx={{ background: "#F05" }}>
             <LockIcon />
@@ -107,21 +105,20 @@ const Login = () => {
 
             <Grid2 size={{ xs: 6 }} sx={{ textAlign: "start" }}>
               <Typography variant="body2"><Link to="/forgot-password">Forgotten Password?</Link></Typography>
-              <Typography variant="body2">Create new Account? <Link to="/signup">Sign Up</Link>
+              <Typography  variant="body2">Create new Account? <Link to="/signup">Sign Up</Link>
               </Typography>
             </Grid2>
 
             <Grid2 size={{ xs: 6 }} sx={{ textAlign: "right" }}>
-              <Button variant="outlined" type="submit" size="small">
+              <Button variant="outlined" type="submit" size="small" fullWidth>
                 Login
               </Button>
             </Grid2>
           </Grid2>
         </form>
-      </Paper>
       </Grid2>
       </Grid2> 
-      {/* </Paper> */}
+      </Paper>
     </Container>
   );
 };

@@ -5,6 +5,10 @@ export interface StudentRowData {
   name:string,
   email:string,
 }
+export interface typeData{
+  Email:string,
+  Password:string
+}
 
 export interface StudentColumnData {
 feilds:keyof StudentRowData,
@@ -19,9 +23,10 @@ export interface StudentTableProps {
   }
 
 
+
   export interface StudentFormProps {
     formId: string;
     handleChangeStudent: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    formData: FormtypeData;
+    formData: FormtypeData
 
   }
