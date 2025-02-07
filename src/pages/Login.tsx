@@ -9,46 +9,39 @@ import {
   Stack,
 } from "@mui/material";
 import loginGIF from '../assets/loginGIF.json'
+import { useFormik } from "formik";
+import * as Yup from 'yup'
 import Lottie from "lottie-react";
 import LockIcon from "@mui/icons-material/Lock";
 import { Link, useNavigate } from "react-router";
-import { useState } from "react";
-import { typeData } from "../types";
+// import { typeData } from "../types";
+
 const Login = () => {
   const navigate = useNavigate();
 
-  const loginData: typeData = {
-    Email: "",
-    Password: "",
-  };
+   const validationSchema = Yup.object().shape({
+      password: Yup.string().min(6).required("Invalid password"),
+      email: Yup.string()
+        .required("Invalid Email")
+        .matches(
+          /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/,
+          "Invalid email address"
+        ),
+    });
+ 
+     const {handleChange,handleSubmit,values,errors} = useFormik({
+      initialValues:{
+        email:"",
+        password:""
+      },
+      validationSchema,
+      onSubmit:(values)=>{
+       console.log(values)
+       navigate("/dashboard");
 
-  const [data, setData] = useState<typeData>(loginData);
-  const [error, setError] = useState<typeData>(loginData);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setData((prev) => ({ ...data, [e.target.name]: e.target.value }));
-  };
-
-  const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
-    try {
-      e.preventDefault();
-      setError(loginData);
-      if (!data.Email.trim() || !data.Password.trim())
-        return setError({ Password: "Both Feilds are Required!!", Email: "" });
-     else if (!data.Email.includes("@"))
-        return setError({ Email: "Invalid Email!!", Password: "" });
-     else if (!data.Password.trim())
-        return setError({ Password: "Password required", Email: "" });
-     else if ((data.Password.length) < 6)
-      return setError({ Password: "Password must be 6 character", Email: "" });
-      alert("Form submitted");
-      setData(loginData);
-      setError(loginData);
-      navigate("/dashboard");
-    } catch (err) {
-      console.log(err, "--err in catch");
-    }
-  };
+      }
+     })
+     console.log(errors)
 
 
   return (
@@ -76,31 +69,29 @@ const Login = () => {
             <Grid2 size={{ xs: 12, sm: 12 }}>
               <TextField
                 fullWidth
-                label="Email"
+                error={!!errors.email}
+                label="email"
                 variant="outlined"
                 onChange={handleChange}
-                value={data.Email}
-                name="Email"
+                helperText={errors.email}
+                value={values.email}
+                name="email"
                 size="small"
               />
-              {error.Email && (
-                <Typography color="red">{error.Email}</Typography>
-              )}
             </Grid2>
 
             <Grid2 size={{ xs: 12, sm: 12 }}>
               <TextField
+              error={!!errors.password}
                 fullWidth
-                label="Password"
+                label="password"
                 variant="outlined"
+                helperText={errors.password}
                 onChange={handleChange}
-                value={data.Password}
-                name="Password"
+                value={values.password}
+                name="password"
                 size="small"
               />
-              {error.Password && (
-                <Typography color="red">{error.Password}</Typography>
-              )}
             </Grid2>
 
             <Grid2 size={{ xs: 6 }} sx={{ textAlign: "start" }}>
