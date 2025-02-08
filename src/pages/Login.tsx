@@ -29,7 +29,7 @@ const Login = () => {
         ),
     });
  
-     const {handleChange,handleSubmit,values,errors} = useFormik({
+     const {handleChange,handleSubmit,values,errors,handleBlur,touched} = useFormik({
       initialValues:{
         email:"",
         password:""
@@ -40,7 +40,7 @@ const Login = () => {
        alert("form submit!!");
        navigate("/dashboard");
 
-      }
+      },
      })
      console.log(errors)
 
@@ -74,10 +74,11 @@ const Login = () => {
                 id:"email",
                 size:"small",
                 name:"email",
+                onBlur:handleBlur,
                 value:values.email,
                 onChange:handleChange,
-                error:errors.email,
-                helperText:errors.email,
+                error: touched.email && errors.email,
+                helperText: touched.email && errors.email,
               }}
               />
             </Grid2>
@@ -91,8 +92,9 @@ const Login = () => {
                 name:"password",
                 value:values.password,
                 onChange:handleChange,
-                error:errors.password,
-                helperText:errors.password
+                onBlur:handleBlur,
+                error: touched.password && errors.password,
+                helperText:touched.password &&  errors.password
               }}
               />
             </Grid2>

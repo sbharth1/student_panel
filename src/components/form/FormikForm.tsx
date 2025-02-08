@@ -14,7 +14,7 @@ const FormikForm = ({ formId, setOpen, initialValue = "", dispatch }) => {
       ),
   });
 
-  const { handleSubmit, handleChange, values, setValues, errors, resetForm } =
+  const { handleSubmit, handleChange, values, setValues, errors, resetForm,handleBlur,touched } =
     useFormik({
       initialValues: {
         name: "",
@@ -46,9 +46,10 @@ const FormikForm = ({ formId, setOpen, initialValue = "", dispatch }) => {
           PropsValue={{
             id: "name",
             size: "small",
-            error:errors.name,
-            helperText:errors.name,
+            error:touched.name && errors.name,
+            helperText:touched.name && errors.name,
             name: "name",
+            onBlur:handleBlur,
             value: values.name,
             onChange: handleChange,
           }}
@@ -59,8 +60,9 @@ const FormikForm = ({ formId, setOpen, initialValue = "", dispatch }) => {
           PropsValue={{
             id: "email",
             size: "small",
-            error:errors.email,
-            helperText:errors.email,
+            error:touched.email &&  errors.email,
+            helperText: touched.email && errors.email,
+            onBlur:handleBlur,
             name: "email",
             value: values.email,
             onChange: handleChange,
