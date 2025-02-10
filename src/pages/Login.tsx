@@ -74,12 +74,12 @@ const Login = () => {
                 id:"email",
                 size:"small",
                 name:"email",
-                onBlur:handleBlur,
+                onBlur: handleBlur,
                 value:values.email,
                 onChange:handleChange,
                 error: touched.email && errors.email,
-                helperText: touched.email && errors.email,
-              }}
+                helperText:touched.email && errors.email ,
+              }}  
               />
             </Grid2>
 
@@ -94,7 +94,7 @@ const Login = () => {
                 onChange:handleChange,
                 onBlur:handleBlur,
                 error: touched.password && errors.password,
-                helperText:touched.password &&  errors.password
+                helperText:touched.password && errors.password,
               }}
               />
             </Grid2>
