@@ -4,6 +4,7 @@ import Login from '../pages/Login'
 import Main from '../Layout/Main'
 import Dashboard from '../pages/Dashboard'
 import Student from '../pages/Student'
+import Roles from '../pages/Roles'
 const Router = () => {
   return (
     <BrowserRouter>
@@ -15,6 +16,7 @@ const Router = () => {
         <Route path="/" element={<Main/>}>
         <Route path="/dashboard" element={<Dashboard/>}/>
         <Route path="/student" element={<Student/>}/>
+        <Route path="/roles" element={<Roles/>}/>
         </Route>
      </Routes>
     </BrowserRouter>

@@ -13,7 +13,6 @@ import LayersIcon from '@mui/icons-material/Layers';
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import GroupIcon from '@mui/icons-material/Group';
 import { useNavigate } from "react-router";
-import Roles from "../pages/Roles";
 
 const CollapseListItem = ({ links }:any) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -69,7 +68,7 @@ const Navlinks = [
       },
       {
         label: "Roles",
-        icon: <Roles />,
+        icon: <GroupIcon />,
         path: "/Roles", 
       }
     ],
