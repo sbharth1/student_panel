@@ -67,13 +67,14 @@ const Navlinks = [
         icon: <GroupIcon />,
         path: "/student",
       },
+      {
+        label: "Roles",
+        icon: <Roles />,
+        path: "/Roles", 
+      }
     ],
   },
-  {
-    label: "Roles",
-    icon: <Roles />,
-    path: "/Roles", 
-  }
+
 ];
 
 const Sidebar = () => {
