@@ -8,12 +8,14 @@ import { StudentColumnData, } from "../types";
 import useLocalStorageReducer from "../hooks/useLocalStorageReducer";
 import { reducer } from "../reducer/addStudentReducer";
 import FormikForm from "../components/form/FormikForm";
+import SimpleSnackbar from "../components/snackbar/Snackbar";
 
 const Student = () => {
    const [students,dispatch] = useLocalStorageReducer('students',reducer,[]);
   const [open, setOpen] = useState<boolean>(false);
   const [studentForm,setStudentForm] = useState<boolean>(false);
   const [selectRow,setSelectRow] = useState<object | string>(''); 
+  const [snackbar,setSnackBar] = useState({type:"",open:false,message:""});
 
   const handleClickOpen = () => {
     setSelectRow('')
@@ -24,6 +26,10 @@ const Student = () => {
     setOpen(false);
   };
 
+
+  const handleSnackbarClose = () => {
+  setSnackBar({type:'',open:false,message:""})
+  };
 
 const columns:StudentColumnData[]  = [
   {feilds:"id",headerName:"Students Id"},
@@ -57,12 +63,13 @@ const actions = [
 
   {/* StudentForm */}
     <ReactDialogBox open={open} handleClose={handleClose} formId="student" title={studentForm ? 'Update Student Form' : 'Create Student Form'} studentForm={studentForm}>
-      <FormikForm formId="student" setOpen={setOpen} initialValue={selectRow} dispatch={dispatch}/>
+      <FormikForm formId="student" setOpen={setOpen} setSnackBar={setSnackBar} initialValue={selectRow} dispatch={dispatch}/>
     </ReactDialogBox>
 
       {/* StudentTable */}
 
       <StudentTable columns={columns} rows={students} actions={actions} addActionHeader={addActionHeader} />
+      <SimpleSnackbar handleSnackbarClose={handleSnackbarClose} snackbar={snackbar}/>
     </>
   )
 }

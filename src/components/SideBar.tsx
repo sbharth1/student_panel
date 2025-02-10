@@ -65,14 +65,14 @@ const Navlinks = [
         label: "Students",
         icon: <GroupIcon />,
         path: "/student",
-      },
-      {
-        label: "Roles",
-        icon: <GroupIcon />,
-        path: "/Roles", 
       }
     ],
   },
+  {
+    label:"Roles",
+    icon:<LayersIcon/>,
+    path:"/roles"
+  }
 
 ];
 

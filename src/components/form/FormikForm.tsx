@@ -3,7 +3,7 @@ import InputFeild from "../input/InputFeild";
 import { useEffect } from "react";
 import * as Yup from "yup";
 
-const FormikForm = ({ formId, setOpen, initialValue = "", dispatch }) => {
+const FormikForm = ({ formId, setOpen, initialValue = "", dispatch,setSnackBar }) => {
   const validationSchema = Yup.object().shape({
     name: Yup.string().min(2).required("Name is required"),
     email: Yup.string()
@@ -24,8 +24,10 @@ const FormikForm = ({ formId, setOpen, initialValue = "", dispatch }) => {
       onSubmit: (values) => {
         if (initialValue) {
           dispatch({ type: "EDIT_STUDENT", payload: values });
+          setSnackBar({type:"success",open:true,message:"Data Edit Sucessfully!"})
         } else {
           dispatch({ type: "ADD_STUDENT", payload: values });
+          setSnackBar({type:"success",open:true,message:"Data Inserted Sucessfully!"})
         }
         setOpen(false);
         resetForm();
