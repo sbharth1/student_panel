@@ -89,6 +89,7 @@ const Login = () => {
               PropsValue={{
                 id:"password",
                 size:"small",
+                type:"password",
                 name:"password",
                 value:values.password,
                 onChange:handleChange,
