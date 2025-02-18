@@ -14,6 +14,7 @@ import Lottie from "lottie-react";
 import LockIcon from "@mui/icons-material/Lock";
 import { Link, useNavigate } from "react-router";
 import InputFeild from "../components/input/InputFeild";
+import axios from 'axios'
 // import { typeData } from "../types";
 
 const Login = () => {
@@ -35,9 +36,10 @@ const Login = () => {
         password:""
       },
       validationSchema,
-      onSubmit:(values)=>{
+      onSubmit:async (values)=>{
        console.log(values)
-       alert("form submit!!");
+        await axios.post('http://localhost:4500/api/login',values)
+        .then((res) => console.log(res))
        navigate("/dashboard");
 
       },
