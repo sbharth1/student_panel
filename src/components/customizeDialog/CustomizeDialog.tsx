@@ -12,7 +12,7 @@ export default function CustomizeDialog({
 }) {
   const handleDelete = () => {
     dispatch({ type: "DELETE_STUDENT", payload: selectStudent.id });
-    setDeleteDialogBox({ open: false, message: "" });
+    setDeleteDialogBox({open:false, message:""});
   };
   return (
     <>
