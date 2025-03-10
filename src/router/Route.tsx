@@ -5,6 +5,7 @@ import Main from '../Layout/Main'
 import Dashboard from '../pages/Dashboard'
 import Student from '../pages/Student'
 import Roles from '../pages/Roles'
+import NotFound from '../pages/NotFound'
 const Router = () => {
   return (
     <BrowserRouter>
@@ -12,6 +13,7 @@ const Router = () => {
         <Route path='/' element={<PublicRoute/>}>
             <Route path="/" element={<Login/>}/>
         </Route>
+        <Route path='*' element={<NotFound/>}/>
         {/* Protect Routes */}
         <Route path="/" element={<Main/>}>
         <Route path="/dashboard" element={<Dashboard/>}/>

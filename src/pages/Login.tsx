@@ -38,8 +38,8 @@ const Login = () => {
       validationSchema,
       onSubmit:async (values)=>{
        console.log(values)
-        await axios.post('http://localhost:4500/api/login',values)
-        .then((res) => console.log(res))
+        // await axios.post('http://localhost:4500/api/login',values)
+        // .then((res) => console.log(res))
        navigate("/dashboard");
 
       },
