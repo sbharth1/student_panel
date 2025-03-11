@@ -6,6 +6,7 @@ import Dashboard from '../pages/Dashboard'
 import Student from '../pages/Student'
 import Roles from '../pages/Roles'
 import NotFound from '../pages/NotFound'
+import Teacher from '../pages/Teacher'
 const Router = () => {
   return (
     <BrowserRouter>
@@ -19,6 +20,7 @@ const Router = () => {
         <Route path="/dashboard" element={<Dashboard/>}/>
         <Route path="/student" element={<Student/>}/>
         <Route path="/roles" element={<Roles/>}/>
+        <Route path="/teacher" element={<Teacher/>}/>
         </Route>
      </Routes>
     </BrowserRouter>

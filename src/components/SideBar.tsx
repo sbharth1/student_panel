@@ -6,15 +6,15 @@ import {
   ListItemIcon,
   Collapse,
 } from "@mui/material";
-import  { useState } from "react";
-import DashboardIcon from '@mui/icons-material/Dashboard';
+import { useState } from "react";
+import DashboardIcon from "@mui/icons-material/Dashboard";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import LayersIcon from '@mui/icons-material/Layers';
+import LayersIcon from "@mui/icons-material/Layers";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
-import GroupIcon from '@mui/icons-material/Group';
+import GroupIcon from "@mui/icons-material/Group";
 import { useNavigate } from "react-router";
 
-const CollapseListItem = ({ links }:any) => {
+const CollapseListItem = ({ links }: any) => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   return (
@@ -34,9 +34,9 @@ const CollapseListItem = ({ links }:any) => {
       {links.children && (
         <Collapse in={isOpen}>
           <List>
-            {links.children.map((child:any, index:number) => (
+            {links.children.map((child: any, index: number) => (
               <ListItem disablePadding divider key={index}>
-                <ListItemButton onClick={() => navigate(links.path)}>
+                <ListItemButton onClick={() => navigate(child.path)}>
                   <ListItemIcon>{child.icon}</ListItemIcon>
                   <ListItemText primary={child.label} />
                 </ListItemButton>
@@ -65,15 +65,19 @@ const Navlinks = [
         label: "Students",
         icon: <GroupIcon />,
         path: "/student",
+      },
+      {
+        label: "Roles",
+        icon: <LayersIcon />,
+        path: "/roles",
+      },
+      {
+        label:"Teacher",
+        icon:<LayersIcon/>,
+        path:"/teacher"
       }
     ],
   },
-  {
-    label:"Roles",
-    icon:<LayersIcon/>,
-    path:"/roles"
-  }
-
 ];
 
 const Sidebar = () => {
