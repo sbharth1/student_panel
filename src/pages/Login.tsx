@@ -24,7 +24,7 @@ const Login = () => {
     password: Yup.string().min(6).required("Invalid password"),
     email: Yup.string()
       .required("Invalid Email")
-      .matches(
+      .matches( 
         /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/,
         "Invalid email address"
       ),
@@ -113,14 +113,6 @@ const Login = () => {
                   />
                 </Grid2>
 
-                <Grid2 size={{ xs: 6 }} sx={{ textAlign: "start" }}>
-                  <Typography variant="body2">
-                    <Link to="/forgot-password">Forgotten Password?</Link>
-                  </Typography>
-                  <Typography variant="body2">
-                    Create new Account? <Link to="/signup">Sign Up</Link>
-                  </Typography>
-                </Grid2>
 
                 <Grid2 size={{ xs: 6 }} sx={{ textAlign: "right" }}>
                   <Button
